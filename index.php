@@ -3,8 +3,8 @@ require_once("config.php");
 
 $user = new Usuario();
 
-$user->loadById(5);
+$user->loadById(6);
 
-var_dump($user);
-
+//var_dump($user);
+echo $user;
 ?>
