@@ -4,7 +4,7 @@ class Sql extends PDO{
 	private $conn;
 
 	public function __construct(){
-		$this->conn = new PDO("mysql:dbname=dbphp7;host=localhost","root", "123456");
+		$this->conn = new PDO("mysql:host=localhost;dbname=dbphp7","root", "123456");
 		$this->conn->exec("set names utf8");
 	}
 
