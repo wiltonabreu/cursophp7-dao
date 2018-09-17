@@ -98,9 +98,9 @@ class Usuario{
 		}
 
 		public function setData($data){
-			$this->setIdusuario($row['idusuario']);
-			$this->setDeslogin($row['deslogin']);
-			$this->setDessenha($row['dessenha']);
+			$this->setIdusuario($data['idusuario']);
+			$this->setDeslogin($data['deslogin']);
+			$this->setDessenha($data['dessenha']);
 			$this->setDtcadastro(new DateTime($row['dtcadastro']));
 		}
 
@@ -116,7 +116,24 @@ class Usuario{
 			}
 		}
 	
-	
+		public function update($login, $password){
+
+			$this->setDeslogin($login);
+			$this->setDessenha($password);
+
+
+			$sql = new Sql();
+			$sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario= :ID", array(
+					':LOGIN'=>$this->getDeslogin(),
+					':PASSWORD'=>$this->getDessenha(),
+					':ID'=>$this->getIdusuario()
+				));
+		}
+
+		public function __construct($login = "", $password = ""){
+			$this->setDeslogin($login);
+			$this->setDessenha($password);
+		}
 		/*
 
 			CREATE PROCEDURE `sp_usuarios_insert` (
@@ -128,6 +145,7 @@ class Usuario{
 			    select * from tb_usuarios WHERE idusuario = LAST_INSERT_ID();
 			END
 		*/
+
 
 }
 

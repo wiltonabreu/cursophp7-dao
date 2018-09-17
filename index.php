@@ -30,13 +30,20 @@ require_once("config.php");
 
 //echo $usuario;
 
-$aluno = new Usuario();
-$aluno->setDeslogin("Aluno");
-$aluno->setDessenha("@lun0");
+
+/* Criando novo usuário
+$aluno = new Usuario("Aluno2", "@lun0@2");
 
 $aluno->insert();
 
 echo $aluno;
+*/
 
+$usuario = new Usuario();
 
+$usuario->loadById(9);
+
+$usuario->update("Professor", "Pr0fess0R");
+
+echo $usuario;
 ?>
