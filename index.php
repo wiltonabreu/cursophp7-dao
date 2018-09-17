@@ -37,7 +37,9 @@ $aluno = new Usuario("Aluno2", "@lun0@2");
 $aluno->insert();
 
 echo $aluno;
-*/
+
+
+// Update
 
 $usuario = new Usuario();
 
@@ -46,4 +48,15 @@ $usuario->loadById(9);
 $usuario->update("Professor", "Pr0fess0R");
 
 echo $usuario;
+*/
+
+//Excluir um usuário
+$usuario = new Usuario();
+
+$usuario->loadById(6);
+
+$usuario->delete();
+
+echo $usuario;
+
 ?>

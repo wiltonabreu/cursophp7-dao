@@ -101,7 +101,7 @@ class Usuario{
 			$this->setIdusuario($data['idusuario']);
 			$this->setDeslogin($data['deslogin']);
 			$this->setDessenha($data['dessenha']);
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));
+			$this->setDtcadastro(new DateTime($data['dtcadastro']));
 		}
 
 		public function insert(){
@@ -128,6 +128,19 @@ class Usuario{
 					':PASSWORD'=>$this->getDessenha(),
 					':ID'=>$this->getIdusuario()
 				));
+		}
+
+		public function delete(){
+
+			$sql = new Sql();
+			$sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+				':ID'=>$this->getIdusuario()
+				));
+
+			$this->setIdusuario(0);
+			$this->setDessenha("");
+			$this->setDeslogin("");
+			$this->setDtcadastro(new DateTime());
 		}
 
 		public function __construct($login = "", $password = ""){
